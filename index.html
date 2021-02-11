@@ -35,15 +35,20 @@
             <h3 v-else>Its a draw!</h3>
             <button @click="startGame">Start New Game</button>
         </section>
-        <section id=" controls ">
+        <section id="controls" v-else>
             <button @click="attackMonster ">ATTACK</button>
             <button :disabled="mayUseSpecialAttack " @click="specialAttackMonster ">SPECIAL ATTACK</button>
             <button @click="healPlayer ">HEAL</button>
-            <button>SURRENDER</button>
+            <button @click="surrender">SURRENDER</button>
         </section>
         <section id="log " class="container ">
             <h2>Battle Log</h2>
-            <ul></ul>
+            <ul>
+                <li v-for="logMessages in logMessages">
+                    <span>{{ logMessages.actionBy === 'player' ? 'Player' : 'Monster' }}</span>
+                    <span>{{ logMessages.actionBy === 'player' ? 'Player' : 'Monster' }}</span>
+                </li>
+            </ul>
         </section>
     </div>
 </body>
